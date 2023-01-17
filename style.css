@@ -1,0 +1,459 @@
+/* 
+#753682 / #bf2e34
+rgba(255, 255, 255, 0.35)/
+rgba(0, 0, 0, 0.25)/rgba(255, 255, 255, 0.4);
+#333/#444
+#c7365f/#fff/#ddd/#2f2f2f
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700&family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-family: 'Nunito Sans', sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    background: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+    height: 100vh;
+    color: #333;
+    font-family: var(--font-family);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.body {
+    background: linear-gradient(115deg, rgba(0, 0, 0, 0.84)25%, rgba(0, 0, 0, 0.55));
+    color: white;
+}
+
+main {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    height: 37.5rem;
+    width: 60rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 3rem 5rem;
+    backdrop-filter: blur(1rem);
+    filter: blur();
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 1rem;
+    position: relative;
+}
+
+header {
+    width: 32rem;
+    background: linear-gradient(100deg, #333333, #808080);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 0.2rem 4rem;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+    position: relative;
+    border-radius: 6px;
+}
+
+/* game body */
+.player {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    height: 100%;
+    justify-content: space-around;
+    transition: all .6s ease;
+}
+
+.player-active {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.player-active .player-name {
+    color: #171616d0;
+    font-size: 2.12rem;
+}
+
+.player-active .score {
+    font-size: 3.75rem;
+}
+
+.player-name {
+    font-size: 1.8rem;
+    font-family: var(--font-family);
+    color: #333333d0;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+}
+
+.score {
+    font-size: 3.2rem;
+    color: #bf2e34;
+}
+
+.current {
+    height: 7rem;
+    align-items: center;
+    /* border: 3px solid orange; */
+    width: 100%;
+    position: relative;
+}
+
+.current-score-div {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%);
+    height: 7rem;
+    padding: 1rem;
+    width: 9rem;
+    background-color: #c7365f;
+    color: white;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    justify-content: space-around;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.current-score {
+    font-size: 2.5rem;
+}
+
+.dice {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15%;
+    height: auto;
+    border-radius: 10px;
+    display: fixed;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 3rem 5rem;
+    backdrop-filter: blur(1rem);
+}
+
+
+/* overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 6;
+}
+
+/* game rules */
+.Rules {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 25rem;
+    background: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2rem 5rem;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+    border-radius: 6px;
+    color: white;
+    z-index: 10;
+}
+
+/* header */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.content p {
+    font-size: 0.79rem;
+    line-height: 1.12;
+    font-weight: 600;
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.first-player {
+    flex-basis: 60%;
+    display: flex;
+    width: 13rem;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.target-score {
+    text-align: center;
+    justify-content: center;
+    flex-basis: 50%;
+    /* border: 2px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+
+#Score,
+#first-player,
+#second-player {
+    height: 1.85rem;
+    padding: 0.25rem 0.5rem;
+}
+
+
+#id {
+    text-align: center;
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.96);
+
+}
+
+/* Buttons */
+
+/* btn */
+.btn {
+    position: absolute;
+    left: 0;
+    transform: translate(-50%);
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: rgba(51, 51, 51, 0.742);
+    text-align: center;
+    font-family: var(--font-family);
+    box-shadow: rgb(0, 0, 0, 0.65) 0.5px 0.5px 5px;
+    border-radius: 5rem;
+    border: none;
+    font-weight: 700;
+    transition: all .3s ease;
+    cursor: pointer;
+    padding: .785rem 1.5rem;
+}
+
+.btn::first-letter {
+    display: block;
+    margin-right: 10px;
+}
+
+.btn:hover {
+    background-color: #5c5c5c;
+    color: antiquewhite;
+}
+
+.btn:active {
+    transform: translate(-50%, 3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+}
+
+.btn:focus {
+    outline: none;
+}
+
+/* New game btn */
+.new-game {
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+/* Roll dice btn */
+.roll-dice {
+    top: 0;
+}
+
+/* hold btn */
+.hold {
+    bottom: 0;
+}
+
+/* Cancel & info button */
+.cancel,
+.cancel0,
+.info {
+    padding: 0 5px;
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    font-size: 1.25rem;
+    background-color: inherit;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.info {
+    padding: 0 8px;
+    font-size: 1.75rem;
+    background-color: inherit;
+    text-shadow: -1px -0.5px 1.85px rgba(0, 0, 0, 1);
+}
+
+.cancel0:hover,
+.cancel:hover,
+.info:hover {
+    transform: scale(1.5);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 0.2rem .5rem;
+    text-shadow: -2px -0.5px 1.85px rgba(0, 0, 0, 0.25), 1.5px 1.5px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Play button */
+.play {
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 0.15rem 1rem;
+}
+
+.play::first-letter {
+    margin-right: 5px;
+}
+
+
+
+/*  winner section  */
+.winner {
+    background: url('images/winner.png') no-repeat center;
+    background-size: cover;
+    position: absolute;
+    height: 30.5rem;
+    width: 40rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #102080;
+    z-index: 11;
+}
+
+.forfilter {
+    backdrop-filter: blur(5px);
+}
+
+.winner h1 {
+    font-size: 3rem;
+    padding: 2.5rem 0;
+}
+
+.winner h2 {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.winner h2::first-letter,
+.winner h2 span::first-letter {
+    font-size: 3rem;
+}
+
+.winner h4 {
+    font-size: 2rem;
+    margin: 1rem 0 4rem;
+}
+
+.btn-last {
+    position: static;
+    transform: translate(0);
+    margin: 0.5rem;
+    transition: all 0.8s;
+}
+
+.btn-last:active {
+    transform: translate(2px, 50%);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+}
+
+.btn-last:hover {
+    background-color: #6ba9e2e0;
+    color: #ffffff;
+}
+
+
+
+/*  nothing */
+
+.container {
+    display: flex;
+    /*   border:1px solid red; */
+    height: 100%;
+    align-items: center;
+}
+
+svg {
+    display: block;
+    font: 5.5em 'Montserrat';
+    width: 960px;
+    height: 300px;
+    margin: 0 auto;
+    letter-spacing: 1rem;
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1) {
+    stroke: #c7365f;
+    animation-delay: -1;
+}
+
+.text-copy:nth-child(2) {
+    stroke: #bf2e34;
+    animation-delay: -2s;
+}
+
+.text-copy:nth-child(3) {
+    stroke: #753682;
+    animation-delay: -3s;
+}
+
+.text-copy:nth-child(4) {
+    /* stroke: #BD0034; */
+    stroke: #31fd5a;
+    animation-delay: -4s;
+}
+
+.text-copy:nth-child(5) {
+    stroke: #FDB731;
+    animation-delay: -5s;
+}
+
+@keyframes stroke-offset {
+    100% {
+        stroke-dashoffset: -40%;
+    }
+}
+
+
+
+@media (max-width : 520px) {
+
+    main,
+    .winner {
+        height: 90%;
+        width: 100%;
+    }
+}
+
+@media (min-width : 521px) {
+    main {
+        height: 35rem;
+        width: 60rem;
+    }
+}

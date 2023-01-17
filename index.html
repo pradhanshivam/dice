@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DICE_GAME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.css"
+        integrity="sha512-1hsteeq9xTM5CX6NsXiJu3Y/g+tj+IIwtZMtTisemEv3hx+S9ngaW4nryrNcPM4xGzINcKbwUJtojslX2KG+DQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="shortcut icon" href="images/dice.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- // starter body -->
+    <header>
+        <button class="cancel0">X</button>
+        <div class="content">
+            <h3>Game Rules 📃</h3>
+            <p>On a turn,a player rolls the die repeatedly, adding up the numbers rolled on the die.</p>
+            <p>
+                However, if a player rolls a 1, the player's turn is over and any points they have accumulated
+                during
+                this turn are forfeited.
+            </p>
+            <p>
+                Rolling a 1 doesn't wipe out yur entire socore from previous turns, just the total earned during
+                that
+                particular roll.
+            </p>
+            <p>A player can also choose to hold (stop rolling the die) if they do not want to take a chance of
+                rolling a
+                1 and losing all of their points from this turn. If the player chooses to hold, all of the points
+                rolled
+                during that turn are added to his or her score.</p>
+            <p>
+                A player win by being the first player to reach the final score or more points as setted.
+            </p>
+            <hr size="5" color="white">
+            <p style="font-size: 1rem; margin-bottom: 8px;">Who's Playing</p>
+        </div>
+
+
+        <div class="details">
+            <div class="first-player">
+                <label for="first-player">
+                    <i class="fa fa-user"></i> <input type="text" placeholder="Enter First Player Name"
+                        id="first-player"></label>
+
+                <label for="second-player">
+                    <i class="fa fa-user"></i> <input type="text" placeholder="Enter Second Player Name "
+                        id="second-player"></label>
+                <label for="Score">
+                    Score: <input type="number" placeholder="Enter the Target Points" id="Score">
+                </label>
+            </div>
+
+
+            <div class="target-score">
+                <button class="btn play"> ▶️ Play</button>
+                <p id="id"> </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- // Game body -->
+    <main>
+        <section class="player player-active">
+            <div class="player-1">
+                <h2 class="player-name">PLAYER 1</h2>
+                <h1 class="score"> 100 </h1>
+            </div>
+            <div class="current">
+                <div class="current-score-div">
+                    <h3> CURRENT </h3>
+                    <h1 class="current-score"> 0 </h1>
+                </div>
+            </div>
+        </section>
+        <section class="player">
+            <button class="info"> ? </button>
+            <div class="player-2">
+                <h2 class="player-name">PLAYER 2</h2>
+                <h1 class="score"> 100 </h1>
+            </div>
+            <button class="btn new-game">🆕 NEW GAME</button>
+            <div class="current">
+                <div class="current-score-div">
+                    <h3> CURRENT </h3>
+                    <h1 class="current-score"> 0 </h1>
+                </div>
+                <button class="btn roll-dice">🎲 ROLL DICE</button>
+                <button class="btn hold"> 📥 HOLD</button>
+            </div>
+            <img src="images/dice-1.png" alt="dice-1" class="dice">
+        </section>
+    </main>
+
+    <!-- // overlay -->
+    <div class="overlay "></div>
+
+    <!-- // games rules -->
+    <section class="Rules ">
+        <button class="cancel">X</button>
+        <div class="content">
+            <h3>Game Rules 📃</h3>
+            <p>On a turn,a player rolls the die repeatedly, adding up the numbers rolled on the die.</p>
+            <p>
+                However, if a player rolls a 1, the player's turn is over and any points they have accumulated
+                during
+                this turn are forfeited.
+            </p>
+            <p>
+                Rolling a 1 doesn't wipe out yur entire socore from previous turns, just the total earned during
+                that
+                particular roll.
+            </p>
+            <p>A player can also choose to hold (stop rolling the die) if they do not want to take a chance of
+                rolling a
+                1 and losing all of their points from this turn. If the player chooses to hold, all of the points
+                rolled
+                during that turn are added to his or her score.</p>
+            <p>
+                A player win by being the first player to reach the <span class="target" style="display: inline;">
+                    target-score </span> or more points.
+            </p>
+            <hr size="5" color="white">
+        </div>
+    </section>
+
+    <!-- winner section -->
+    <div class="winner">
+        <div class="forfilter">
+            <h1>🎉🎊🎉 Winner 🎉🎊🎉</h1>
+            <h2>Player Name : <span class="winner-name" style="display: inline-block;">Shivam</span> </h2>
+            <h4>Final Score : <span class="player1-final-score">10</span> - <span class="player2-final-score">20</span>
+            </h4>
+            <button class="btn btn-last reset-game">🔄️ Reset Game
+            </button>
+            <button class="btn btn-last replay-game">💫 Replay Game</button>
+            <button class="btn btn-last quit-game">🚫 Quit Game</button>
+        </div>
+    </div>
+
+    <div class="nothing">
+        <div class="container">
+            <svg viewBox="0 0 960 300">
+                <symbol id="s-text">
+                    <text text-anchor="middle" x="50%" y="50%">Game Finished</text>
+                </symbol>
+
+                <g class="g-ants">
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
